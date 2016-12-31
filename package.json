@@ -1,13 +1,13 @@
 {
     "name": "monkey-c",
     "displayName": "Monkey C",
-    "description": "Garmin Monkey C language support for VS Code",
+    "description": "Garmin Connect IQ Monkey C language support for VS Code",
     "icon": "images/icon.svg",
     "galleryBanner": {
         "color": "#424242",
         "theme": "dark"
     },
-    "version": "0.3.0",
+    "version": "0.3.1",
     "publisher": "ghisguth",
     "engines": {
         "vscode": "^1.5.0"
@@ -31,7 +31,11 @@
                 "id": "monkeyc",
                 "aliases": [
                     "Monkey C",
-                    "monkeyc"
+                    "monkeyc",
+                    "garmin",
+                    "Connect IQ",
+                    "connect iq",
+                    "connectiq"
                 ],
                 "extensions": [
                     ".mc"
