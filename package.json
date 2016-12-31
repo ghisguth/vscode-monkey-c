@@ -2,7 +2,7 @@
     "name": "monkey-c",
     "displayName": "Monkey C",
     "description": "Garmin Monkey C language support for VS Code",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "ghisguth",
     "engines": {
         "vscode": "^1.5.0"
@@ -11,20 +11,31 @@
         "Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "monkeyc",
-            "aliases": ["Monkey C", "monkeyc"],
-            "extensions": [".mc"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "monkeyc",
-            "scopeName": "source.mc",
-            "path": "./syntaxes/monkeyc.tmLanguage.json"
-        }],
-        "snippets": [{
-            "language": "monkeyc",
-            "path": "./snippets/monkeyc.json"
-        }]
+        "languages": [
+            {
+                "id": "monkeyc",
+                "aliases": [
+                    "Monkey C",
+                    "monkeyc"
+                ],
+                "extensions": [
+                    ".mc"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "monkeyc",
+                "scopeName": "source.mc",
+                "path": "./syntaxes/monkeyc.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "monkeyc",
+                "path": "./snippets/monkeyc.json"
+            }
+        ]
     }
 }
