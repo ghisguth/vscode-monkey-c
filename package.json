@@ -2,10 +2,21 @@
     "name": "monkey-c",
     "displayName": "Monkey C",
     "description": "Garmin Monkey C language support for VS Code",
+    "icon": "images/icon.svg",
     "version": "0.1.0",
     "publisher": "ghisguth",
     "engines": {
         "vscode": "^1.5.0"
+    },
+    "license": "SEE LICENSE IN LICENSE",
+    "bugs": {
+        "url": "https://github.com/ghisguth/vscode-monkey-c/issues",
+        "email": "alexander.fedora@gmail.com"
+    },
+    "homepage": "https://github.com/ghisguth/vscode-monkey-c/blob/master/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ghisguth/vscode-monkey-c.git"
     },
     "categories": [
         "Languages"

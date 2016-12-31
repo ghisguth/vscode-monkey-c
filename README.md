@@ -6,7 +6,7 @@ VSCode support for Garmin Connect IQ [Monkey C language](https://developer.garmi
 
 * Basic synax highlighting.
 
-![Syntax highlighting](images/syntax.png)
+![Syntax highlighting](https://raw.githubusercontent.com/ghisguth/vscode-monkey-c/master/images/syntax.png)
 
 ## Requirements
 
