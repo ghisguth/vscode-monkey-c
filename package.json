@@ -3,7 +3,11 @@
     "displayName": "Monkey C",
     "description": "Garmin Monkey C language support for VS Code",
     "icon": "images/icon.svg",
-    "version": "0.1.0",
+    "galleryBanner": {
+        "color": "#424242",
+        "theme": "dark"
+    },
+    "version": "0.3.0",
     "publisher": "ghisguth",
     "engines": {
         "vscode": "^1.5.0"

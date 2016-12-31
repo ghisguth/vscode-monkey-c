@@ -24,6 +24,6 @@ Not all of the language features implemented yet. Work in progress.
 
 Very first release. Brings very basic syntax highlighting of Monkey C.
 
-### 0.1.0
+### 0.3.0
 
 Initial release of Monkey C language support.
