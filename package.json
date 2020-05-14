@@ -2,7 +2,7 @@
     "name": "monkey-c",
     "displayName": "Monkey C",
     "description": "Garmin Connect IQ Monkey C language support for VS Code",
-    "icon": "images/icon.svg",
+    "icon": "images/smart-monkey.png",
     "galleryBanner": {
         "color": "#424242",
         "theme": "dark"
@@ -23,8 +23,12 @@
         "url": "https://github.com/ghisguth/vscode-monkey-c.git"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
+    "activationEvents": [
+        "onLanguage:monkeyc"
+    ],
+    "main": "./out/extention.js",
     "contributes": {
         "languages": [
             {
@@ -56,5 +60,14 @@
                 "path": "./snippets/monkeyc.json"
             }
         ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc",
+        "watch": "tsc -watch"
+    },
+    "devDependencies": {
+        "@types/node": "^14.0.1",
+        "vscode": "^1.1.37"
     }
 }
