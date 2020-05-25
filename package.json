@@ -2,7 +2,7 @@
     "name": "monkey-c",
     "displayName": "Monkey C",
     "description": "Garmin Connect IQ Monkey C language support for VS Code",
-    "icon": "images/icon.svg",
+    "icon": "images/icon.png",
     "galleryBanner": {
         "color": "#424242",
         "theme": "dark"
