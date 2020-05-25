@@ -2,7 +2,7 @@
     "name": "monkey-c",
     "displayName": "Monkey C",
     "description": "Garmin Connect IQ Monkey C language support for VS Code",
-    "icon": "images/smart-monkey.png",
+    "icon": "images/icon.svg",
     "galleryBanner": {
         "color": "#424242",
         "theme": "dark"
@@ -69,5 +69,8 @@
     "devDependencies": {
         "@types/node": "^14.0.1",
         "vscode": "^1.1.37"
+    },
+    "dependencies": {
+        "clang-format": "^1.4.0"
     }
 }
