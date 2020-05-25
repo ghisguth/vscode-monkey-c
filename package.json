@@ -23,8 +23,12 @@
         "url": "https://github.com/ghisguth/vscode-monkey-c.git"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
+    "activationEvents": [
+        "onLanguage:monkeyc"
+    ],
+    "main": "./out/extention.js",
     "contributes": {
         "languages": [
             {
@@ -56,5 +60,19 @@
                 "path": "./snippets/monkeyc.json"
             }
         ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc",
+        "watch": "tsc -watch"
+    },
+    "devDependencies": {
+        "@types/node": "^14.0.1",
+        "tslint": "^5.12.1",
+        "typescript": "^3.3.3",
+        "vscode": "^1.1.37"
+    },
+    "dependencies": {
+        "clang-format": "^1.4.0"
     }
 }
