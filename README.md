@@ -24,6 +24,10 @@ Not all of the language features implemented yet. Work in progress.
 
 Very first release. Brings very basic syntax highlighting of Monkey C.
 
+### 0.4.0
+
+Add formatter to Monkey C VSCode Extension by using clang-format and implement  basic function as proof of concept.
+
 ### 0.3.0
 
 Initial release of Monkey C language support.

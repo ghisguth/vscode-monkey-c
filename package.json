@@ -7,7 +7,7 @@
         "color": "#424242",
         "theme": "dark"
     },
-    "version": "0.3.1",
+    "version": "0.4.0",
     "publisher": "ghisguth",
     "engines": {
         "vscode": "^1.5.0"
