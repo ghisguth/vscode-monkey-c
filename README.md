@@ -1,4 +1,10 @@
-# Monkey C for Visual Studio Code
+# Monkey C (Lightweight Community Edition)
+
+> **Disclaimer:** This is a small, lightweight community plugin created in 2016. In 2020, Garmin published their [Official Monkey C Extension](https://marketplace.visualstudio.com/items?itemName=garmin.monkey-c).
+>
+> The official extension provides a comprehensive suite of features including **Autocomplete**, **Folding Ranges**, **Real time errors**, **Renaming**, and **Syntax highlighting**.
+>
+> In contrast, this extension provides **lightweight syntax highlighting** and basic formatting for those who prefer a minimal, fast setup.
 
 Provides Visual Studio Code language support for the Garmin Connect IQ [Monkey C language](https://developer.garmin.com/connect-iq/monkey-c/).
 
@@ -7,15 +13,17 @@ Provides Visual Studio Code language support for the Garmin Connect IQ [Monkey C
 - **Syntax Highlighting**: Comprehensive syntax highlighting for Monkey C, including support for modern `MonkeyTypes`, access modifiers, and type casting keywords.
 - **Code Formatting**: Experimental basic code formatting capabilities leveraging `clang-format`.
 
+![Syntax highlighting](https://raw.githubusercontent.com/ghisguth/vscode-monkey-c/master/images/syntax.png)
+
 ## Installation
 
 To install the extension, search for "Monkey C" within the Visual Studio Code Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X`) and click Install.
 
 ## Development and Testing
 
-### Grammar Testing
+### Automated Testing
 
-To run the automated TextMate grammar evaluation tests using Mocha:
+To run the automated tests for both TextMate grammar and code formatting using Mocha:
 
 ```bash
 npm run test

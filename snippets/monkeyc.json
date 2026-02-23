@@ -1,11 +1,8 @@
 {
   "Function Statement": {
     "prefix": "function",
-    "body": [
-      "function ${1:name}(${2:params}) {",
-      "\t$0",
-      "}"
-    ],
+    "body": ["function ${1:name}(${2:params}) {", "\t$0", "}"],
     "description": "Function Statement"
   }
 }
+
