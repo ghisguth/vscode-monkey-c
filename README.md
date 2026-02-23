@@ -1,33 +1,36 @@
-# vscode-monkey-c README
+# Monkey C for Visual Studio Code
 
-VSCode support for Garmin Connect IQ [Monkey C language](https://developer.garmin.com/connect-iq/programmers-guide/monkey-c/).
+Provides Visual Studio Code language support for the Garmin Connect IQ [Monkey C language](https://developer.garmin.com/connect-iq/monkey-c/).
 
 ## Features
 
-* Basic synax highlighting.
+- **Syntax Highlighting**: Comprehensive syntax highlighting for Monkey C, including support for modern `MonkeyTypes`, access modifiers, and type casting keywords.
+- **Code Formatting**: Experimental basic code formatting capabilities leveraging `clang-format`.
 
-![Syntax highlighting](https://raw.githubusercontent.com/ghisguth/vscode-monkey-c/master/images/syntax.png)
+## Installation
 
-## Requirements
+To install the extension, search for "Monkey C" within the Visual Studio Code Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X`) and click Install.
 
-none
+## Development and Testing
 
-## Extension Settings
+### Grammar Testing
 
-none
+To run the automated TextMate grammar evaluation tests using Mocha:
+
+```bash
+npm run test
+```
+
+To manually verify the test playground file within the Extension Development Host:
+
+```bash
+code --extensionDevelopmentPath=$(pwd) ./test/HighlightTest.mc
+```
 
 ## Known Issues
 
-Not all of the language features implemented yet. Work in progress.
+- This extension provides basic syntax highlighting and formatting. However, it is not under active development for new features, and not all Monkey C language features and edge cases are fully supported.
 
 ## Release Notes
 
-Very first release. Brings very basic syntax highlighting of Monkey C.
-
-### 0.4.0
-
-Add formatter to Monkey C VSCode Extension by using clang-format and implement  basic function as proof of concept.
-
-### 0.3.0
-
-Initial release of Monkey C language support.
+Detailed release notes and version history are available in the [CHANGELOG.md](CHANGELOG.md) file.

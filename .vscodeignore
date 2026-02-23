@@ -4,3 +4,5 @@ src/**
 .gitignore
 tsconfig.json
 tslint.json
+docs/**
+test/**

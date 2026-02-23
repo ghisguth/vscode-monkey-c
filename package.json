@@ -1,78 +1,86 @@
 {
-    "name": "monkey-c",
-    "displayName": "Monkey C",
-    "description": "Garmin Connect IQ Monkey C language support for VS Code",
-    "icon": "images/icon.svg",
-    "galleryBanner": {
-        "color": "#424242",
-        "theme": "dark"
-    },
-    "version": "0.4.0",
-    "publisher": "ghisguth",
-    "engines": {
-        "vscode": "^1.5.0"
-    },
-    "license": "SEE LICENSE IN LICENSE",
-    "bugs": {
-        "url": "https://github.com/ghisguth/vscode-monkey-c/issues",
-        "email": "alexander.fedora@gmail.com"
-    },
-    "homepage": "https://github.com/ghisguth/vscode-monkey-c/blob/master/README.md",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ghisguth/vscode-monkey-c.git"
-    },
-    "categories": [
-        "Programming Languages"
-    ],
-    "activationEvents": [
-        "onLanguage:monkeyc"
-    ],
-    "main": "./out/extention.js",
-    "contributes": {
-        "languages": [
-            {
-                "id": "monkeyc",
-                "aliases": [
-                    "Monkey C",
-                    "monkeyc",
-                    "garmin",
-                    "Connect IQ",
-                    "connect iq",
-                    "connectiq"
-                ],
-                "extensions": [
-                    ".mc"
-                ],
-                "configuration": "./language-configuration.json"
-            }
+  "name": "monkey-c",
+  "displayName": "Monkey C",
+  "description": "Garmin Connect IQ Monkey C language support for VS Code",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#424242",
+    "theme": "dark"
+  },
+  "version": "0.5.0",
+  "publisher": "ghisguth",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/ghisguth/vscode-monkey-c/issues",
+    "email": "alexander.fedora@gmail.com"
+  },
+  "homepage": "https://github.com/ghisguth/vscode-monkey-c/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghisguth/vscode-monkey-c.git"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:monkeyc"
+  ],
+  "main": "./out/extention.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "monkeyc",
+        "aliases": [
+          "Monkey C",
+          "monkeyc",
+          "garmin",
+          "Connect IQ",
+          "connect iq",
+          "connectiq"
         ],
-        "grammars": [
-            {
-                "language": "monkeyc",
-                "scopeName": "source.mc",
-                "path": "./syntaxes/monkeyc.tmLanguage.json"
-            }
+        "extensions": [
+          ".mc"
         ],
-        "snippets": [
-            {
-                "language": "monkeyc",
-                "path": "./snippets/monkeyc.json"
-            }
-        ]
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc",
-        "watch": "tsc -watch"
-    },
-    "devDependencies": {
-        "@types/node": "^14.0.1",
-        "tslint": "^5.12.1",
-        "typescript": "^3.3.3",
-        "vscode": "^1.1.37"
-    },
-    "dependencies": {
-        "clang-format": "^1.4.0"
-    }
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "monkeyc",
+        "scopeName": "source.mc",
+        "path": "./syntaxes/monkeyc.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "monkeyc",
+        "path": "./snippets/monkeyc.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc",
+    "watch": "tsc -watch",
+    "test": "mocha test/*.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.1",
+    "@types/vscode": "^1.60.0",
+    "mocha": "^11.7.5",
+    "tslint": "^5.20.1",
+    "typescript": "^4.5.0"
+  },
+  "dependencies": {
+    "clang-format": "^1.8.0",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.3.2"
+  },
+  "overrides": {
+    "minimatch": "^10.2.2",
+    "glob": "^13.0.6"
+  }
 }

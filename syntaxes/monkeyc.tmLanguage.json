@@ -58,6 +58,9 @@
 					"include": "#var-single-variable"
 				},
 				{
+					"include": "#type-clause"
+				},
+				{
 					"include": "#variable-initializer"
 				},
 				{
@@ -78,15 +81,7 @@
 							"name": "entity.name.function.mc"
 						}
 					},
-					"end": "(?=$|[;,=}]|(\\s+(of|in)\\s+))",
-					"patterns": [
-						{
-							"include": "#string"
-						},
-						{
-							"include": "#comment"
-						}
-					]
+					"end": "(?=\\s*(as|of|in|=|[;,}]))"
 				},
 				{
 					"name": "meta.var-single-variable.expr.mc",
@@ -96,7 +91,7 @@
 							"name": "variable.other.constant.mc"
 						}
 					},
-					"end": "(?=$|[;,=}]|(\\s+(of|in)\\s+))"
+					"end": "(?=\\s*(as|of|in|=|[;,}]))"
 				},
 				{
 					"name": "meta.var-single-variable.expr.mc",
@@ -106,15 +101,7 @@
 							"name": "variable.other.readwrite.mc"
 						}
 					},
-					"end": "(?=$|[;,=}]|(\\s+(of|in)\\s+))",
-					"patterns": [
-						{
-							"include": "#string"
-						},
-						{
-							"include": "#comment"
-						}
-					]
+					"end": "(?=\\s*(as|of|in|=|[;,}]))"
 				}
 			]
 		},
@@ -190,6 +177,10 @@
 		"control-statement": {
 			"patterns": [
 				{
+					"name": "keyword.control.typedef.mc",
+					"match": "(?<!\\.|\\$)\\b(typedef)\\b(?!\\$)"
+				},
+				{
 					"name": "keyword.control.trycatch.mc",
 					"match": "(?<!\\.|\\$)\\b(catch|finally|throw|try)\\b(?!\\$)"
 				},
@@ -218,6 +209,9 @@
 					"include": "#decorator"
 				},
 				{
+					"include": "#access-modifier"
+				},
+				{
 					"include": "#var-expr"
 				},
 				{
@@ -238,16 +232,17 @@
 			]
 		},
 		"decorator": {
-				"name": "meta.decorator.mc",
-				"patterns": [
+			"name": "meta.decorator.mc",
+			"patterns": [
 				{
 					"match": "(?<!\\.|\\$)(\\(:([_$[:alpha:]][_$[:alnum:]]*)\\))",
 					"captures": {
 						"0": {
 							"name": "storage.type.decorator.mc"
 						}
+					}
 				}
-			}]
+			]
 		},
 		"enum-declaration": {
 			"name": "meta.enum.declaration.mc",
@@ -348,7 +343,7 @@
 		},
 		"import-declaration": {
 			"name": "meta.import.mc",
-			"begin": "(?<!\\.|\\$)\\b(using)(?!(\\s*:)|(\\$))\\b",
+			"begin": "(?<!\\.|\\$)\\b(using|import)(?!(\\s*:)|(\\$))\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.import.mc"
@@ -549,13 +544,16 @@
 			"end": "(?=\\}|;|,|$)|(?<=\\})",
 			"patterns": [
 				{
+					"include": "#type-clause"
+				},
+				{
 					"include": "#variable-initializer"
 				}
 			]
 		},
 		"method-declaration": {
 			"name": "meta.method.declaration.mc",
-			"begin": "(?<!\\.|\\$)(?:\\b(hidden)\\s+)?(?:\\b(function)\\s+)(?:(?:\\b(?:(initialize)|(initialize))\\b(?!\\$|:))|(?:(\\*)\\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\\'[^']*\\')|(\\\"[^\"]*\\\")|(\\[([^\\[\\]]|\\[[^\\[\\]]*\\])+\\]))\\s*(\\??))?\\s*[\\(\\<]))",
+			"begin": "(?<!\\.|\\$)(?:\\b(hidden|public|private|protected)\\s+)?(?:\\b(function)\\s+)(?:(?:\\b(?:(initialize)|(initialize))\\b(?!\\$|:))|(?:(\\*)\\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\\'[^']*\\')|(\\\"[^\"]*\\\")|(\\[([^\\[\\]]|\\[[^\\[\\]]*\\])+\\]))\\s*(\\??))?\\s*[\\(\\<]))",
 			"beginCaptures": {
 				"1": {
 					"name": "storage.modifier.mc"
@@ -583,6 +581,9 @@
 				},
 				{
 					"include": "#function-parameters"
+				},
+				{
+					"include": "#type-clause"
 				},
 				{
 					"include": "#decl-block"
@@ -623,6 +624,9 @@
 				},
 				{
 					"include": "#function-parameters"
+				},
+				{
+					"include": "#type-clause"
 				},
 				{
 					"include": "#decl-block"
@@ -700,35 +704,29 @@
 					}
 				},
 				{
-					"match": "(?x)(?:\\s*\\b(hidden|static)\\s+)?(\\.\\.\\.)?\\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\\s*(\\??)(?=\\s*\n  (=\\s*(\n    (function\\s*[(<]) |\n    (function\\s+) |\n    ([_$[:alpha:]][_$[:alnum:]]*\\s*=>) |\n    ([(]\\s*(([)]\\s*:)|([_$[:alpha:]][_$[:alnum:]]*\\s*:)|(\\.\\.\\.) )) |\n    ([<]\\s*[_$[:alpha:]][_$[:alnum:]]*((\\s+extends\\s*[^=>])|(\\s*[,]))) |\n    ((<([^<>]|\\<[^<>]+\\>)+>\\s*)?\\(([^()]|\\([^()]*\\))*\\)(\\s*:\\s*(.)*)?\\s*=>))\n  ) |\n  (:\\s*(\n    (<) |\n    ([(]\\s*(\n      ([)]) |\n      (\\.\\.\\.) |\n      ([_$[:alnum:]]+\\s*(\n        ([:,?=])|\n        ([)]\\s*=>)\n      ))\n    )))\n  )\n)",
+					"match": "(?:\\s*\\b(hidden|static|public|private|protected)\\s+)?\\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)(?=\\s*(as|,|\\)|=))",
 					"captures": {
 						"1": {
 							"name": "storage.modifier.mc"
 						},
 						"2": {
-							"name": "keyword.operator.rest.mc"
-						},
-						"3": {
-							"name": "entity.name.function.mc"
-						},
-						"4": {
-							"name": "keyword.operator.optional.mc"
-						}
-					}
-				},
-				{
-					"match": "(?:\\s*\\b(hidden|static)\\s+)?\\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\\s*",
-					"captures": {
-						"1": {
-							"name": "storage.modifier.mc"
-						},
-						"2": {
-							"name": "keyword.operator.rest.mc"
-						},
-						"3": {
 							"name": "variable.parameter.mc"
 						}
 					}
+				}
+			]
+		},
+		"type-clause": {
+			"begin": "(?<!\\.|\\$)\\b(as)\\b(?!\\$)",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.as.mc"
+				}
+			},
+			"end": "(?=[;,={)])|(?=^\\s*$)",
+			"patterns": [
+				{
+					"include": "#type"
 				}
 			]
 		},
@@ -780,7 +778,13 @@
 					"include": "#decorator"
 				},
 				{
+					"include": "#type-dictionary"
+				},
+				{
 					"include": "#parameter-name"
+				},
+				{
+					"include": "#type-clause"
 				},
 				{
 					"include": "#variable-initializer"
@@ -791,9 +795,40 @@
 				}
 			]
 		},
+		"type-dictionary": {
+			"name": "meta.type.dictionary.mc",
+			"begin": "\\{",
+			"beginCaptures": {
+				"0": {
+					"name": "meta.brace.curly.mc"
+				}
+			},
+			"end": "\\}",
+			"endCaptures": {
+				"0": {
+					"name": "meta.brace.curly.mc"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#comment"
+				},
+				{
+					"name": "constant.other.symbol.mc",
+					"match": "(:[_$[:alpha:]][_$[:alnum:]]*)"
+				},
+				{
+					"include": "#type-clause"
+				},
+				{
+					"name": "punctuation.separator.parameter.mc",
+					"match": ","
+				}
+			]
+		},
 		"type-builtin-literals": {
-			"name": "support.type.builtin.mc",
-			"match": "(?<!\\.|\\$)\\b(this|true|false|null)\\b(?!\\$)"
+			"name": "storage.type.builtin.mc",
+			"match": "(?<!\\.|\\$)\\b(this|true|false|null|Number|Float|Double|Long|Boolean|String|Char|Symbol|Array|Dictionary|Method|Object|WeakReference|Void)\\b(?!\\$)"
 		},
 		"type-paren-or-function-parameters": {
 			"name": "meta.type.paren.cover.mc",
@@ -1075,6 +1110,10 @@
 			"end": "(?<=\\))(?!(\\.\\s*)?([_$[:alpha:]][_$[:alnum:]]*)\\s*(<([^<>]|\\<[^<>]+\\>)+>\\s*)?\\()",
 			"patterns": [
 				{
+					"name": "storage.type.builtin.mc",
+					"match": "(?<!\\.|\\$)\\b(Number|Float|Double|Long|Boolean|String|Char|Symbol|Array|Dictionary|Method|Null|Object|WeakReference|Void)\\b(?!\\$)"
+				},
+				{
 					"include": "#support-objects"
 				},
 				{
@@ -1094,6 +1133,10 @@
 		},
 		"identifiers": {
 			"patterns": [
+				{
+					"name": "storage.type.builtin.mc",
+					"match": "(?<!\\.|\\$)\\b(Number|Float|Double|Long|Boolean|String|Char|Symbol|Array|Dictionary|Method|Null|Object|WeakReference|Void)\\b(?!\\$)"
+				},
 				{
 					"name": "support.class.mc",
 					"match": "([_$[:alpha:]][_$[:alnum:]]*)(?=\\s*\\.\\s*prototype\\b(?!\\$))"
@@ -1194,12 +1237,30 @@
 				},
 				{
 					"name": "meta.object.member.mc",
-					"begin": "(?:[:_$[:alpha:]][_$[:alnum:]]*)\\s*(=>)",
+					"begin": "(:[_$[:alpha:]][_$[:alnum:]]*)\\s*(=>)",
 					"beginCaptures": {
-						"0": {
+						"1": {
+							"name": "constant.other.symbol.mc"
+						},
+						"2": {
+							"name": "punctuation.separator.key-value.mc"
+						}
+					},
+					"end": "(?=,|\\})",
+					"patterns": [
+						{
+							"include": "#expression"
+						}
+					]
+				},
+				{
+					"name": "meta.object.member.mc",
+					"begin": "([_$[:alpha:]][_$[:alnum:]]*)\\s*(=>)",
+					"beginCaptures": {
+						"1": {
 							"name": "meta.object-literal.key.mc"
 						},
-						"1": {
+						"2": {
 							"name": "punctuation.separator.key-value.mc"
 						}
 					},
@@ -1222,8 +1283,12 @@
 					"match": "(?<!\\.|\\$)\\binstanceof\\b(?!\\$)"
 				},
 				{
-					"name": "keyword.operator.expression.has.mc",
+					"name": "keyword.control.has.mc",
 					"match": "(?<!\\.|\\$)\\bhas\\b(?!\\$)"
+				},
+				{
+					"name": "keyword.control.as.mc",
+					"match": "(?<!\\.|\\$)\\bas\\b(?!\\$)"
 				},
 				{
 					"name": "keyword.operator.new.mc",
@@ -1485,8 +1550,8 @@
 		"null-literal": {
 			"patterns": [
 				{
-				"name": "constant.language.null.mc",
-				"match": "(?<!\\.|\\$)\\bnull\\b(?!\\$)"
+					"name": "constant.language.null.mc",
+					"match": "(?<!\\.|\\$)\\bnull\\b(?!\\$)"
 				}
 			]
 		},
@@ -1502,7 +1567,7 @@
 			"patterns": [
 				{
 					"name": "storage.modifier.mc",
-					"match": "(?<!\\.|\\$)\\b(hidden|static)\\b(?!\\$)"
+					"match": "(?<!\\.|\\$)\\b(hidden|static|public|private|protected)\\b(?!\\$)"
 				}
 			]
 		},
